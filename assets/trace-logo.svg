@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="traceGradA" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="55%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="traceGradB" x1="10" y1="38" x2="40" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#traceGradA)"/>
+  <circle cx="24" cy="24" r="14" stroke="url(#traceGradB)" stroke-width="1.75" stroke-dasharray="56 16" stroke-linecap="round" opacity="0.9"/>
+  <path d="M16.5 18.5H31.5M24 18.5V31.5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="24" cy="18.5" r="2.75" fill="#38BDF8"/>
+  <circle cx="33.5" cy="13.5" r="2.2" fill="#C4B5FD"/>
+</svg>

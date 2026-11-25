@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TRACE — The Intelligent Campus Recovery System. Connect lost and found campus belongings through intelligent attribute matching." />
+  <title>TRACE — Intelligent Campus Recovery System</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Typography: Geometric Sans + Editorial Display Accent + Technical Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#dashboard">Skip to dashboard workspace</a>
+
+  <!-- Global Top Navigation -->
+  <header class="trace-navbar-wrap" id="topNav">
+    <nav class="navbar navbar-expand-lg trace-navbar container-xxl" aria-label="Primary navigation">
+      <a class="navbar-brand trace-brand" href="#home" aria-label="TRACE Home">
+        <span class="trace-brand-mark" aria-hidden="true">
+          <img src="assets/trace-logo.svg" alt="" width="34" height="34" />
+        </span>
+        <span class="trace-brand-text">
+          <span class="trace-wordmark">TRACE</span>
+          <span class="trace-tagline">Campus Recovery</span>
+        </span>
+      </a>
+
+      <button class="navbar-toggler trace-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#traceMainNav" aria-controls="traceMainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="traceMainNav">
+        <ul class="navbar-nav mx-auto trace-nav-links">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home" data-nav-target="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#overview" data-nav-target="overview">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#report" data-nav-target="report">Report Item</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#smart-matches" data-nav-target="smart-matches">
+              Smart Matches
+              <span class="nav-pill-count" id="navMatchCount">4</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#browse" data-nav-target="browse">Browse Items</a>
+          </li>
+        </ul>
+
+        <div class="trace-nav-actions">
+          <div class="campus-live-pill" title="Matching engine operational across 7 campus zones">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>7 Zones Live</span>
+          </div>
+          <button type="button" class="btn trace-btn-primary btn-sm ripple-btn" data-jump-report="lost">
+            <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Quick Report
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         HERO SECTION — Full-Screen 3D Spatial Landing Experience
+         ========================================================= -->
+    <section class="hero-section" id="home" aria-labelledby="heroHeading">
+      <!-- Layered Ambient Orbs & Soft Particle Canvas -->
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-orb orb-icy"></div>
+        <div class="hero-orb orb-lavender"></div>
+        <div class="hero-orb orb-cyan"></div>
+        <div class="hero-grid-overlay"></div>
+        <canvas id="heroParticles" class="hero-particles"></canvas>
+      </div>
+
+      <div class="container-xxl hero-container">
+        <div class="row align-items-center g-5">
+          <!-- Left Editorial Column -->
+          <div class="col-lg-6 hero-copy-col">
+            <div class="hero-eyebrow reveal-on-load">
+              <span class="eyebrow-badge">
+                <i class="bi bi-stars" aria-hidden="true"></i>
+                Intelligent Campus Recovery Network
+              </span>
+              <span class="eyebrow-meta">v2.4 · Real-time Attribute Graph</span>
+            </div>
+
+            <h1 class="hero-headline reveal-on-load" id="heroHeading">
+              Lost something?
+              <span class="hero-headline-accent">Let&rsquo;s bring it back.</span>
+            </h1>
+
+            <p class="hero-subtitle reveal-on-load">
+              TRACE connects misplaced campus belongings with verified finders in hours, not weeks.
+              Describe what you lost or found once&mdash;our multi-attribute matching engine scores
+              colour, location proximity, timeframe, and visual traits automatically.
+            </p>
+
+            <div class="hero-cta-group reveal-on-load">
+              <button type="button" class="btn trace-btn-primary trace-btn-lg ripple-btn" data-jump-report="lost">
+                <i class="bi bi-search-heart me-2" aria-hidden="true"></i>
+                Report Lost Item
+              </button>
+              <button type="button" class="btn trace-btn-secondary trace-btn-lg ripple-btn" data-jump-report="found">
+                <i class="bi bi-box2-heart me-2" aria-hidden="true"></i>
+                Report Found Item
+              </button>
+            </div>
+
+            <!-- Subtle Campus Telemetry Strip -->
+            <div class="hero-metrics-strip reveal-on-load" aria-label="Campus recovery highlights">
+              <div class="hero-metric">
+                <span class="hero-metric-val">94.2%</span>
+                <span class="hero-metric-lbl">Match accuracy</span>
+              </div>
+              <div class="hero-metric-divider" aria-hidden="true"></div>
+              <div class="hero-metric">
+                <span class="hero-metric-val">3.8 hrs</span>
+                <span class="hero-metric-lbl">Median recovery</span>
+              </div>
+              <div class="hero-metric-divider" aria-hidden="true"></div>
+              <div class="hero-metric">
+                <span class="hero-metric-val">6 Desks</span>
+                <span class="hero-metric-lbl">Synced campus hubs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 3D Spatial Recovery Stage -->
+          <div class="col-lg-6 hero-stage-col">
+            <div class="hero-3d-viewport" id="hero3dViewport" aria-label="3D interactive showcase of commonly recovered campus items: headphones, ID card, wallet, keys, and water bottle">
+              <div class="hero-3d-stage" id="hero3dStage">
+                <!-- Orbital Depth Rings -->
+                <div class="orbit-plane orbit-outer" aria-hidden="true"></div>
+                <div class="orbit-plane orbit-inner" aria-hidden="true"></div>
+                <div class="stage-glow-disc" aria-hidden="true"></div>
+
+                <!-- 1. Studio Headphones (Central Hero Sculpture) -->
+                <div class="float-obj obj-headphones" data-depth="65">
+                  <div class="obj-card-glass">
+                    <div class="headphones-3d" aria-hidden="true">
+                      <div class="hp-band"></div>
+                      <div class="hp-cup hp-cup-left">
+                        <span class="hp-cushion"></span>
+                      </div>
+                      <div class="hp-cup hp-cup-right">
+                        <span class="hp-cushion"></span>
+                      </div>
+                      <div class="hp-signal-ring"></div>
+                    </div>
+                    <div class="obj-meta">
+                      <span class="obj-tag tag-found">Found · Library 3F</span>
+                      <strong class="obj-title">Studio Headphones</strong>
+                      <span class="obj-sub">96% match signal</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Campus Smart ID Card (Front Floating Plane) -->
+                <div class="float-obj obj-idcard" data-depth="95">
+                  <div class="idcard-3d" aria-hidden="true">
+                    <div class="idcard-holo"></div>
+                    <div class="idcard-top">
+                      <span class="idcard-chip"></span>
+                      <span class="idcard-univ">NORTHRIDGE UNIV</span>
+                    </div>
+                    <div class="idcard-body">
+                      <div class="idcard-avatar">
+                        <i class="bi bi-person-fill"></i>
+                      </div>
+                      <div class="idcard-lines">
+                        <span class="id-line-lg"></span>
+                        <span class="id-line-sm"></span>
+                        <span class="id-code">ID · 26-8419</span>
+                      </div>
+                    </div>
+                    <div class="idcard-footer">
+                      <span>SMART ACCESS</span>
+                      <span class="idcard-badge">VERIFIED</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Minimalist Leather Wallet -->
+                <div class="float-obj obj-wallet" data-depth="45">
+                  <div class="wallet-3d" aria-hidden="true">
+                    <div class="wallet-card-peek"></div>
+                    <div class="wallet-card-peek second"></div>
+                    <div class="wallet-shell">
+                      <span class="wallet-stitch"></span>
+                      <span class="wallet-clasp"></span>
+                    </div>
+                  </div>
+                  <span class="obj-floating-label">
+                    <i class="bi bi-wallet2" aria-hidden="true"></i> Navy Wallet
+                  </span>
+                </div>
+
+                <!-- 4. Brass & Steel Keyring -->
+                <div class="float-obj obj-keys" data-depth="80">
+                  <div class="keys-3d" aria-hidden="true">
+                    <div class="key-ring"></div>
+                    <div class="key-fob">B-402</div>
+                    <div class="key-blade key-1"></div>
+                    <div class="key-blade key-2"></div>
+                  </div>
+                  <span class="obj-floating-label">
+                    <i class="bi bi-key" aria-hidden="true"></i> Dorm Keys
+                  </span>
+                </div>
+
+                <!-- 5. Insulated Water Bottle -->
+                <div class="float-obj obj-bottle" data-depth="35">
+                  <div class="bottle-3d" aria-hidden="true">
+                    <div class="bottle-cap"></div>
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body">
+                      <span class="bottle-highlight"></span>
+                      <span class="bottle-band">HYDRO</span>
+                    </div>
+                  </div>
+                  <span class="obj-floating-label">
+                    <i class="bi bi-droplet" aria-hidden="true"></i> Glacier Flask
+                  </span>
+                </div>
+
+                <!-- Floating Telemetry Chip -->
+                <div class="float-obj obj-telemetry" data-depth="110" aria-hidden="true">
+                  <div class="telemetry-pill">
+                    <span class="telemetry-ring"></span>
+                    <div>
+                      <div class="telemetry-title">Match Found</div>
+                      <div class="telemetry-desc">Engineering Quad · 12m ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#dashboard" class="hero-scroll-cue" aria-label="Scroll to TRACE Dashboard">
+        <span>Explore Workspace</span>
+        <i class="bi bi-arrow-down" aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <!-- =========================================================
+         MAIN APPLICATION SHELL — Sidebar + Spacious Content Area
+         ========================================================= -->
+    <section class="workspace-shell" id="dashboard" aria-label="TRACE Campus Recovery Workspace">
+      <div class="container-xxl">
+        <div class="workspace-frame">
+          <!-- Mobile Sidebar Bar -->
+          <div class="mobile-workspace-bar d-lg-none">
+            <button class="btn trace-btn-outline btn-sm" type="button" id="mobileSidebarToggle" aria-controls="workspaceSidebar" aria-expanded="false">
+              <i class="bi bi-layout-sidebar me-2" aria-hidden="true"></i>Workspace Menu
+            </button>
+            <span class="mobile-active-label" id="mobileActiveSectionLabel">Overview</span>
+          </div>
+
+          <div class="sidebar-backdrop d-lg-none" id="sidebarBackdrop" aria-hidden="true"></div>
+
+          <!-- Persistent Modern Sidebar -->
+          <aside class="workspace-sidebar" id="workspaceSidebar" aria-label="Dashboard navigation">
+            <div class="sidebar-header d-lg-none">
+              <span class="fw-bold text-navy">Workspace</span>
+              <button type="button" class="btn-close" id="mobileSidebarClose" aria-label="Close sidebar"></button>
+            </div>
+
+            <div class="sidebar-section-label">Navigation</div>
+            <nav class="sidebar-nav" aria-label="Workspace sections">
+              <a href="#overview" class="sidebar-link active" data-section="overview">
+                <span class="sidebar-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
+                <span>Overview</span>
+              </a>
+              <a href="#report" class="sidebar-link" data-section="report-lost" data-jump-report="lost">
+                <span class="sidebar-icon icon-lost"><i class="bi bi-exclamation-circle" aria-hidden="true"></i></span>
+                <span>Report Lost</span>
+              </a>
+              <a href="#report" class="sidebar-link" data-section="report-found" data-jump-report="found">
+                <span class="sidebar-icon icon-found"><i class="bi bi-check2-circle" aria-hidden="true"></i></span>
+                <span>Report Found</span>
+              </a>
+              <a href="#smart-matches" class="sidebar-link" data-section="smart-matches">
+                <span class="sidebar-icon icon-match"><i class="bi bi-cpu" aria-hidden="true"></i></span>
+                <span>Smart Matches</span>
+                <span class="sidebar-badge" id="sidebarMatchBadge">4</span>
+              </a>
+              <a href="#browse" class="sidebar-link" data-section="browse">
+                <span class="sidebar-icon"><i class="bi bi-compass" aria-hidden="true"></i></span>
+                <span>Browse Reports</span>
+              </a>
+              <a href="#activity" class="sidebar-link" data-section="activity">
+                <span class="sidebar-icon"><i class="bi bi-activity" aria-hidden="true"></i></span>
+                <span>Activity</span>
+              </a>
+            </nav>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="sidebar-section-label">Campus Hub Status</div>
+            <div class="sidebar-hub-card">
+              <div class="hub-card-top">
+                <span class="hub-status-dot" aria-hidden="true"></span>
+                <span class="hub-status-text">Central Desk Open</span>
+              </div>
+              <p class="hub-card-desc">Student Union · Rm 104B<br />Verified ID required for pickup</p>
+              <div class="hub-mini-metrics">
+                <div>
+                  <span class="hub-mini-val" id="sidebarActiveCount">0</span>
+                  <span class="hub-mini-lbl">Active</span>
+                </div>
+                <div>
+                  <span class="hub-mini-val" id="sidebarMatchedRate">0%</span>
+                  <span class="hub-mini-lbl">Recovered</span>
+                </div>
+              </div>
+              <button type="button" class="btn trace-btn-outline btn-xs w-100 mt-3" id="resetDemoBtn">
+                <i class="bi bi-arrow-counterclockwise me-1" aria-hidden="true"></i>Reset Demo Data
+              </button>
+            </div>
+          </aside>
+
+          <!-- Spacious Main Content Area -->
+          <div class="workspace-main">
+
+            <!-- ===================================================
+                 1. DASHBOARD OVERVIEW
+                 =================================================== -->
+            <section class="workspace-section" id="overview" aria-labelledby="overviewTitle">
+              <!-- Welcome & Global Search Header -->
+              <div class="overview-header reveal-item">
+                <div>
+                  <span class="section-kicker">Campus Command Center</span>
+                  <h2 class="section-title" id="overviewTitle">Welcome back to TRACE Hub</h2>
+                  <p class="section-subtitle">Real-time recovery telemetry, active reports, and intelligent match suggestions across campus.</p>
+                </div>
+                <div class="overview-search-wrap">
+                  <div class="modern-search-box">
+                    <i class="bi bi-search search-leading-icon" aria-hidden="true"></i>
+                    <input type="search" id="globalSearchInput" class="form-control modern-search-input" placeholder="Search lost keys, AirPods, Main Library..." aria-label="Quick search across all campus reports" autocomplete="off" />
+                    <kbd class="search-kbd" aria-hidden="true">/</kbd>
+                  </div>
+                  <div class="quick-search-dropdown" id="quickSearchDropdown" role="region" aria-label="Quick search results" hidden></div>
+                </div>
+              </div>
+
+              <!-- 4 KPI Summary Cards with Animated Counters -->
+              <div class="row g-3 g-xl-4 mb-4">
+                <div class="col-sm-6 col-xl-3">
+                  <article class="kpi-card tilt-card reveal-item" data-kpi="lost">
+                    <div class="kpi-card-top">
+                      <span class="kpi-icon kpi-icon-lost"><i class="bi bi-search" aria-hidden="true"></i></span>
+                      <span class="kpi-trend trend-neutral" id="kpiLostTrend">0 active</span>
+                    </div>
+                    <div class="kpi-value" id="kpiTotalLost" data-target="0">0</div>
+                    <div class="kpi-label">Total Lost</div>
+                    <div class="kpi-foot">Reported lost items</div>
+                  </article>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                  <article class="kpi-card tilt-card reveal-item" data-kpi="found">
+                    <div class="kpi-card-top">
+                      <span class="kpi-icon kpi-icon-found"><i class="bi bi-box-seam" aria-hidden="true"></i></span>
+                      <span class="kpi-trend trend-up" id="kpiFoundTrend">0 active</span>
+                    </div>
+                    <div class="kpi-value" id="kpiTotalFound" data-target="0">0</div>
+                    <div class="kpi-label">Total Found</div>
+                    <div class="kpi-foot">Logged found items</div>
+                  </article>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                  <article class="kpi-card tilt-card reveal-item" data-kpi="matches">
+                    <div class="kpi-card-top">
+                      <span class="kpi-icon kpi-icon-match"><i class="bi bi-stars" aria-hidden="true"></i></span>
+                      <span class="kpi-trend trend-accent" id="kpiMatchTrend">0% avg</span>
+                    </div>
+                    <div class="kpi-value" id="kpiPotentialMatches" data-target="0">0</div>
+                    <div class="kpi-label">Potential Matches</div>
+                    <div class="kpi-foot">Awaiting owner review</div>
+                  </article>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                  <article class="kpi-card tilt-card reveal-item" data-kpi="recovered">
+                    <div class="kpi-card-top">
+                      <span class="kpi-icon kpi-icon-recovered"><i class="bi bi-shield-check" aria-hidden="true"></i></span>
+                      <span class="kpi-trend trend-up" id="kpiRecoveryRate">0% rate</span>
+                    </div>
+                    <div class="kpi-value" id="kpiRecovered" data-target="0">0</div>
+                    <div class="kpi-label">Successfully Recovered</div>
+                    <div class="kpi-foot">Verified campus returns</div>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Overview Bento Row: Recent Reports + Smart Matching Activity + Recovery Velocity -->
+              <div class="row g-4">
+                <!-- Recent Lost & Found Reports -->
+                <div class="col-lg-7">
+                  <div class="glass-panel h-100 reveal-item">
+                    <div class="panel-header">
+                      <div>
+                        <h3 class="panel-title">Recent Lost &amp; Found Reports</h3>
+                        <p class="panel-subtitle">Latest submissions synced across campus hubs</p>
+                      </div>
+                      <a href="#browse" class="btn trace-btn-ghost btn-sm">
+                        View All <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                    <div class="recent-reports-list" id="recentReportsList">
+                      <!-- Populated dynamically by script.js -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Smart Matching Activity Panel + Recovery Activity Chart -->
+                <div class="col-lg-5 d-flex flex-column gap-4">
+                  <div class="glass-panel reveal-item" id="matchingActivityPanel">
+                    <div class="panel-header">
+                      <div>
+                        <h3 class="panel-title">Smart Matching Engine</h3>
+                        <p class="panel-subtitle">Live attribute correlation signals</p>
+                      </div>
+                      <span class="engine-status-pill">
+                        <span class="pulse-dot" aria-hidden="true"></span>Active
+                      </span>
+                    </div>
+
+                    <div class="matching-activity-body">
+                      <div class="engine-highlight-box" id="engineHighlightBox">
+                        <div class="engine-score-mini">
+                          <span class="mono-num" id="engineTopScore">0%</span>
+                          <small>Top Match</small>
+                        </div>
+                        <div class="engine-highlight-copy">
+                          <strong id="engineTopTitle">Scanning campus reports...</strong>
+                          <span id="engineTopMeta">Waiting for matching pairs</span>
+                        </div>
+                        <a href="#smart-matches" class="btn trace-btn-primary btn-xs" id="engineTopReviewBtn">Review</a>
+                      </div>
+
+                      <div class="signal-weights">
+                        <div class="weight-row">
+                          <div class="d-flex justify-content-between small mb-1">
+                            <span>Overall Recovery Rate</span>
+                            <span class="mono-num" id="signalRecoveryPct">0%</span>
+                          </div>
+                          <div class="progress trace-progress">
+                            <div class="progress-bar bg-cyan-grad" id="signalRecoveryBar" style="width: 0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                        <div class="weight-row">
+                          <div class="d-flex justify-content-between small mb-1">
+                            <span>Average Match Confidence</span>
+                            <span class="mono-num" id="signalMatchAvgPct">0%</span>
+                          </div>
+                          <div class="progress trace-progress">
+                            <div class="progress-bar bg-lavender-grad" id="signalMatchAvgBar" style="width: 0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                        <div class="weight-row">
+                          <div class="d-flex justify-content-between small mb-1">
+                            <span>Active Reports Resolved</span>
+                            <span class="mono-num" id="signalResolvedRatio">0 / 0</span>
+                          </div>
+                          <div class="progress trace-progress">
+                            <div class="progress-bar bg-navy-grad" id="signalResolvedBar" style="width: 0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Attractive Recovery Activity Mini-Chart -->
+                  <div class="glass-panel reveal-item">
+                    <div class="panel-header pb-2">
+                      <div>
+                        <h3 class="panel-title">Report Activity by Zone</h3>
+                        <p class="panel-subtitle" id="weeklyRecoverySubtitle">Distribution across active campus hubs</p>
+                      </div>
+                      <span class="kpi-trend trend-up" id="weeklyRecoveryBadge">Live</span>
+                    </div>
+                    <div class="recovery-chart-wrap" aria-label="Campus reports bar chart by zone">
+                      <div class="recovery-bars" id="weeklyRecoveryBars">
+                        <!-- Dynamically rendered by script.js -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ===================================================
+                 2. REPORT ITEM EXPERIENCE (A: Lost & B: Found)
+                 =================================================== -->
+            <section class="workspace-section" id="report" aria-labelledby="reportSectionTitle">
+              <div class="section-header-row reveal-item">
+                <div>
+                  <span class="section-kicker">Structured Intake</span>
+                  <h2 class="section-title" id="reportSectionTitle">Report a Campus Item</h2>
+                  <p class="section-subtitle">Choose Lost or Found below. Every structured detail improves automatic match precision.</p>
+                </div>
+
+                <!-- Segmented Switcher for A. Report Lost Item & B. Report Found Item -->
+                <div class="report-mode-switcher" role="tablist" aria-label="Report type">
+                  <button type="button" class="mode-tab active" id="tabReportLost" role="tab" aria-selected="true" aria-controls="panelReportLost" data-report-mode="lost">
+                    <i class="bi bi-search-heart me-2" aria-hidden="true"></i>A. Report Lost Item
+                  </button>
+                  <button type="button" class="mode-tab" id="tabReportFound" role="tab" aria-selected="false" aria-controls="panelReportFound" data-report-mode="found">
+                    <i class="bi bi-box2-heart me-2" aria-hidden="true"></i>B. Report Found Item
+                  </button>
+                </div>
+              </div>
+
+              <div class="row g-4 align-items-start">
+                <!-- Left Column: Forms A & B -->
+                <div class="col-xl-8">
+                  <!-- A. Report Lost Item Panel -->
+                  <div class="glass-panel report-form-panel active reveal-item" id="panelReportLost" role="tabpanel" aria-labelledby="tabReportLost">
+                    <div class="form-banner banner-lost">
+                      <div class="banner-icon"><i class="bi bi-compass-fill" aria-hidden="true"></i></div>
+                      <div>
+                        <h3 class="h5 mb-1 fw-bold">Report a Lost Belonging</h3>
+                        <p class="mb-0 small text-muted-navy">We&rsquo;ll scan existing found logs immediately and notify you as soon as a high-confidence match appears.</p>
+                      </div>
+                    </div>
+
+                    <form id="lostItemForm" class="trace-form needs-validation" novalidate data-form-type="lost">
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <div class="form-floating trace-floating">
+                            <input type="text" class="form-control" id="lostName" name="name" placeholder="e.g., Sony WH-1000XM5 Headphones" required minlength="3" />
+                            <label for="lostName">Item Name *</label>
+                            <div class="invalid-feedback">Please enter the item name (at least 3 characters).</div>
+                          </div>
+                          <div class="field-hint">Include brand or model if known.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-floating trace-floating">
+                            <select class="form-select" id="lostCategory" name="category" required>
+                              <option value="" selected disabled>Choose a category...</option>
+                              <option value="Electronics">Electronics</option>
+                              <option value="Keys & Access">Keys &amp; Access</option>
+                              <option value="Wallets & Cards">Wallets &amp; Cards</option>
+                              <option value="Drinkware">Drinkware</option>
+                              <option value="Bags & Apparel">Bags &amp; Apparel</option>
+                              <option value="Books & Notes">Books &amp; Notes</option>
+                              <option value="Accessories">Accessories</option>
+                            </select>
+                            <label for="lostCategory">Category *</label>
+                            <div class="invalid-feedback">Select an item category.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-floating trace-floating">
+                            <select class="form-select" id="lostColour" name="colour" required>
+                              <option value="" selected disabled>Choose colour...</option>
+                              <option value="Midnight Black">Midnight Black</option>
+                              <option value="Silver / Space Gray">Silver / Space Gray</option>
+                              <option value="Navy Blue">Navy Blue</option>
+                              <option value="Glacier Cyan">Glacier Cyan</option>
+                              <option value="Lavender / Lilac">Lavender / Lilac</option>
+                              <option value="Cream / White">Cream / White</option>
+                              <option value="Amber / Brass">Amber / Brass</option>
+                              <option value="Crimson Red">Crimson Red</option>
+                              <option value="Sage / Olive">Sage / Olive</option>
+                            </select>
+                            <label for="lostColour">Primary Colour *</label>
+                            <div class="invalid-feedback">Please pick the closest colour.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-floating trace-floating">
+                            <select class="form-select" id="lostLocation" name="location" required>
+                              <option value="" selected disabled>Last seen zone...</option>
+                              <option value="Main Library">Main Library</option>
+                              <option value="Student Union">Student Union</option>
+                              <option value="Engineering Quad">Engineering Quad</option>
+                              <option value="Science Hall">Science Hall</option>
+                              <option value="Dining Commons">Dining Commons</option>
+                              <option value="Athletics Center">Athletics Center</option>
+                              <option value="West Residence">West Residence</option>
+                            </select>
+                            <label for="lostLocation">Last Seen Location *</label>
+                            <div class="invalid-feedback">Select where you last remember having it.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-floating trace-floating">
+                            <input type="date" class="form-control" id="lostDate" name="date" required />
+                            <label for="lostDate">Date Lost *</label>
+                            <div class="invalid-feedback">Please choose a valid date.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                          <div class="form-floating trace-floating">
+                            <textarea class="form-control trace-textarea" id="lostDescription" name="description" placeholder="Describe stickers, scratches, case colour, or room details..." required minlength="12" maxlength="320"></textarea>
+                            <label for="lostDescription">Distinctive Details &amp; Description *</label>
+                            <div class="invalid-feedback">Add at least 12 characters of distinguishing details to improve matching.</div>
+                          </div>
+                          <div class="d-flex justify-content-between field-hint">
+                            <span>Mention unique stickers, engravings, case type, or floor number.</span>
+                            <span class="mono-num" id="lostCharCount">0 / 320</span>
+                          </div>
+                        </div>
+
+                        <!-- Optional Image Preview Upload -->
+                        <div class="col-12">
+                          <label class="form-label fw-semibold small text-navy mb-2" for="lostImageInput">Reference Photo (Optional)</label>
+                          <div class="upload-dropzone" data-upload-target="lost">
+                            <input type="file" class="upload-input" id="lostImageInput" accept="image/*" aria-label="Upload optional photo of lost item" />
+                            <div class="upload-placeholder" id="lostUploadPlaceholder">
+                              <span class="upload-icon"><i class="bi bi-cloud-arrow-up" aria-hidden="true"></i></span>
+                              <div>
+                                <strong>Click to select</strong> or drag an image from your device
+                                <div class="small text-muted-navy">PNG, JPG, or WEBP &middot; Local preview only</div>
+                              </div>
+                            </div>
+                            <div class="upload-preview" id="lostUploadPreview" hidden>
+                              <img src="" alt="Selected lost item preview" id="lostPreviewImg" />
+                              <div class="upload-preview-info">
+                                <strong id="lostFileName">image.jpg</strong>
+                                <span id="lostFileSize">0 KB</span>
+                              </div>
+                              <button type="button" class="btn btn-sm trace-btn-ghost text-danger" data-clear-upload="lost" aria-label="Remove selected image">
+                                <i class="bi bi-trash3"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-12 pt-2 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                          <span class="small text-muted-navy">
+                            <i class="bi bi-shield-lock me-1" aria-hidden="true"></i>Your report is visible to campus recovery matching without exposing personal contact details.
+                          </span>
+                          <button type="submit" class="btn trace-btn-primary trace-btn-lg ripple-btn">
+                            <i class="bi bi-send-check me-2" aria-hidden="true"></i>Submit Lost Report
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- B. Report Found Item Panel -->
+                  <div class="glass-panel report-form-panel reveal-item" id="panelReportFound" role="tabpanel" aria-labelledby="tabReportFound" hidden>
+                    <div class="form-banner banner-found">
+                      <div class="banner-icon"><i class="bi bi-box2-heart-fill" aria-hidden="true"></i></div>
+                      <div>
+                        <h3 class="h5 mb-1 fw-bold">Log a Found Belonging</h3>
+                        <p class="mb-0 small text-muted-navy">Thank you for helping a fellow student. TRACE will immediately check active lost inquiries for a match.</p>
+                      </div>
+                    </div>
+
+                    <form id="foundItemForm" class="trace-form needs-validation" novalidate data-form-type="found">
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <div class="form-floating trace-floating">
+                            <input type="text" class="form-control" id="foundName" name="name" placeholder="e.g., Silver Hydro Flask 32oz" required minlength="3" />
+                            <label for="foundName">Item Name *</label>
+                            <div class="invalid-feedback">Please enter the item name (at least 3 characters).</div>
+                          </div>
+                          <div class="field-hint">What kind of item did you find?</div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-floating trace-floating">
+                            <select class="form-select" id="foundCategory" name="category" required>
+                              <option value="" selected disabled>Choose a category...</option>
+                              <option value="Electronics">Electronics</option>
+                              <option value="Keys & Access">Keys &amp; Access</option>
+                              <option value="Wallets & Cards">Wallets &amp; Cards</option>
+                              <option value="Drinkware">Drinkware</option>
+                              <option value="Bags & Apparel">Bags &amp; Apparel</option>
+                              <option value="Books & Notes">Books &amp; Notes</option>
+                              <option value="Accessories">Accessories</option>
+                            </select>
+                            <label for="foundCategory">Category *</label>
+                            <div class="invalid-feedback">Select an item category.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-floating trace-floating">
+                            <select class="form-select" id="foundColour" name="colour" required>
+                              <option value="" selected disabled>Choose colour...</option>
+                              <option value="Midnight Black">Midnight Black</option>
+                              <option value="Silver / Space Gray">Silver / Space Gray</option>
+                              <option value="Navy Blue">Navy Blue</option>
+                              <option value="Glacier Cyan">Glacier Cyan</option>
+                              <option value="Lavender / Lilac">Lavender / Lilac</option>
+                              <option value="Cream / White">Cream / White</option>
+                              <option value="Amber / Brass">Amber / Brass</option>
+                              <option value="Crimson Red">Crimson Red</option>
+                              <option value="Sage / Olive">Sage / Olive</option>
+                            </select>
+                            <label for="foundColour">Primary Colour *</label>
+                            <div class="invalid-feedback">Please pick the item&rsquo;s primary colour.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-floating trace-floating">
+                            <select class="form-select" id="foundLocation" name="location" required>
+                              <option value="" selected disabled>Found location...</option>
+                              <option value="Main Library">Main Library</option>
+                              <option value="Student Union">Student Union</option>
+                              <option value="Engineering Quad">Engineering Quad</option>
+                              <option value="Science Hall">Science Hall</option>
+                              <option value="Dining Commons">Dining Commons</option>
+                              <option value="Athletics Center">Athletics Center</option>
+                              <option value="West Residence">West Residence</option>
+                            </select>
+                            <label for="foundLocation">Found Location *</label>
+                            <div class="invalid-feedback">Select where the item was found.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-floating trace-floating">
+                            <input type="date" class="form-control" id="foundDate" name="date" required />
+                            <label for="foundDate">Date Found *</label>
+                            <div class="invalid-feedback">Please choose a valid date.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                          <div class="form-floating trace-floating">
+                            <textarea class="form-control trace-textarea" id="foundDescription" name="description" placeholder="Describe condition, exact bench/room, and where it is safely stored..." required minlength="12" maxlength="320"></textarea>
+                            <label for="foundDescription">Condition &amp; Drop-off Notes *</label>
+                            <div class="invalid-feedback">Please add at least 12 characters describing the item and handoff spot.</div>
+                          </div>
+                          <div class="d-flex justify-content-between field-hint">
+                            <span>Tip: Keep one small detail private (e.g., last 4 digits) for owner verification.</span>
+                            <span class="mono-num" id="foundCharCount">0 / 320</span>
+                          </div>
+                        </div>
+
+                        <!-- Optional Image Preview Upload -->
+                        <div class="col-12">
+                          <label class="form-label fw-semibold small text-navy mb-2" for="foundImageInput">Item Photo (Optional)</label>
+                          <div class="upload-dropzone" data-upload-target="found">
+                            <input type="file" class="upload-input" id="foundImageInput" accept="image/*" aria-label="Upload optional photo of found item" />
+                            <div class="upload-placeholder" id="foundUploadPlaceholder">
+                              <span class="upload-icon"><i class="bi bi-camera" aria-hidden="true"></i></span>
+                              <div>
+                                <strong>Click to attach photo</strong> or drag &amp; drop here
+                                <div class="small text-muted-navy">Helps owners verify visual details faster</div>
+                              </div>
+                            </div>
+                            <div class="upload-preview" id="foundUploadPreview" hidden>
+                              <img src="" alt="Selected found item preview" id="foundPreviewImg" />
+                              <div class="upload-preview-info">
+                                <strong id="foundFileName">image.jpg</strong>
+                                <span id="foundFileSize">0 KB</span>
+                              </div>
+                              <button type="button" class="btn btn-sm trace-btn-ghost text-danger" data-clear-upload="found" aria-label="Remove selected image">
+                                <i class="bi bi-trash3"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-12 pt-2 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                          <span class="small text-muted-navy">
+                            <i class="bi bi-building-check me-1" aria-hidden="true"></i>You can drop found items at Student Union Desk 104B anytime.
+                          </span>
+                          <button type="submit" class="btn trace-btn-found trace-btn-lg ripple-btn">
+                            <i class="bi bi-check2-all me-2" aria-hidden="true"></i>Submit Found Report
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- Right Column: Live Interactive Report Preview Card -->
+                <div class="col-xl-4">
+                  <div class="glass-panel live-preview-panel reveal-item">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <span class="section-kicker mb-0">Live Card Preview</span>
+                      <span class="badge-type badge-lost" id="previewTypeBadge">LOST</span>
+                    </div>
+
+                    <div class="preview-card-shell" id="livePreviewCard">
+                      <div class="preview-media" id="previewMediaBox">
+                        <i class="bi bi-box2" id="previewFallbackIcon" aria-hidden="true"></i>
+                        <img src="" alt="Live item preview" id="previewCardImg" hidden />
+                      </div>
+                      <div class="preview-body">
+                        <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
+                          <span class="preview-category" id="previewCategory">Category</span>
+                          <span class="preview-colour-pill" id="previewColourPill">
+                            <span class="colour-dot" id="previewColourDot"></span>
+                            <span id="previewColourText">Colour</span>
+                          </span>
+                        </div>
+                        <h4 class="preview-title" id="previewTitle">Your item title appears here</h4>
+                        <p class="preview-desc" id="previewDesc">Start typing distinctive attributes so TRACE can evaluate colour, zone, and semantic matches.</p>
+                        <div class="preview-meta-row">
+                          <span><i class="bi bi-geo-alt me-1" aria-hidden="true"></i><span id="previewLocation">Campus Zone</span></span>
+                          <span><i class="bi bi-calendar3 me-1" aria-hidden="true"></i><span id="previewDate">Today</span></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="preview-intelligence-note">
+                      <i class="bi bi-lightning-charge-fill" aria-hidden="true"></i>
+                      <span>On submit, TRACE immediately scores this report against active campus logs and surfaces new matches above 65%.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ===================================================
+                 3. SMART MATCHES SECTION
+                 =================================================== -->
+            <section class="workspace-section" id="smart-matches" aria-labelledby="smartMatchesTitle">
+              <div class="section-header-row reveal-item">
+                <div>
+                  <span class="section-kicker">Intelligent Correlation</span>
+                  <h2 class="section-title" id="smartMatchesTitle">Smart Matches</h2>
+                  <p class="section-subtitle">Side-by-side comparisons ranked by multi-attribute confidence across lost and found reports.</p>
+                </div>
+
+                <div class="match-filter-pills" role="group" aria-label="Filter smart matches">
+                  <button type="button" class="filter-pill active" data-match-filter="all">All Matches</button>
+                  <button type="button" class="filter-pill" data-match-filter="high">90%+ Score</button>
+                  <button type="button" class="filter-pill" data-match-filter="pending">Pending Review</button>
+                  <button type="button" class="filter-pill" data-match-filter="confirmed">Confirmed</button>
+                </div>
+              </div>
+
+              <div class="smart-matches-grid" id="smartMatchesGrid">
+                <!-- Side-by-side comparison cards rendered by script.js -->
+              </div>
+            </section>
+
+            <!-- ===================================================
+                 4. BROWSE REPORTS SECTION
+                 =================================================== -->
+            <section class="workspace-section" id="browse" aria-labelledby="browseTitle">
+              <div class="section-header-row reveal-item">
+                <div>
+                  <span class="section-kicker">Campus Directory</span>
+                  <h2 class="section-title" id="browseTitle">Browse Reports</h2>
+                  <p class="section-subtitle">Search, filter, and inspect every active or recovered item logged across campus.</p>
+                </div>
+                <div class="browse-type-pills" role="group" aria-label="Filter by report type">
+                  <button type="button" class="filter-pill active" data-browse-type="all">All</button>
+                  <button type="button" class="filter-pill" data-browse-type="lost">Lost</button>
+                  <button type="button" class="filter-pill" data-browse-type="found">Found</button>
+                </div>
+              </div>
+
+              <!-- Filter & Search Toolbar -->
+              <div class="glass-panel browse-toolbar mb-4 reveal-item">
+                <div class="row g-2 g-md-3 align-items-center">
+                  <div class="col-lg-4">
+                    <div class="input-group trace-input-group">
+                      <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+                      <input type="search" id="browseSearch" class="form-control" placeholder="Search name, keywords, description, location..." aria-label="Search browse items" />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 col-lg-2">
+                    <select id="browseCategory" class="form-select trace-select" aria-label="Filter by category">
+                      <option value="all">All Categories</option>
+                      <option value="Electronics">Electronics</option>
+                      <option value="Keys & Access">Keys &amp; Access</option>
+                      <option value="Wallets & Cards">Wallets &amp; Cards</option>
+                      <option value="Drinkware">Drinkware</option>
+                      <option value="Bags & Apparel">Bags &amp; Apparel</option>
+                      <option value="Books & Notes">Books &amp; Notes</option>
+                      <option value="Accessories">Accessories</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-3 col-lg-2">
+                    <select id="browseLocation" class="form-select trace-select" aria-label="Filter by campus location">
+                      <option value="all">All Locations</option>
+                      <option value="Main Library">Main Library</option>
+                      <option value="Student Union">Student Union</option>
+                      <option value="Engineering Quad">Engineering Quad</option>
+                      <option value="Science Hall">Science Hall</option>
+                      <option value="Dining Commons">Dining Commons</option>
+                      <option value="Athletics Center">Athletics Center</option>
+                      <option value="West Residence">West Residence</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-3 col-lg-2">
+                    <select id="browseStatus" class="form-select trace-select" aria-label="Filter by status">
+                      <option value="all">All Statuses</option>
+                      <option value="active">Active</option>
+                      <option value="resolved">Resolved</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-3 col-lg-2">
+                    <select id="browseSort" class="form-select trace-select" aria-label="Sort reports">
+                      <option value="newest">Recently Reported</option>
+                      <option value="oldest">Oldest First</option>
+                      <option value="match">Highest Match %</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3 pt-2 border-top border-light-subtle">
+                  <span class="small text-muted-navy" id="browseResultsSummary">Showing 0 reports</span>
+                  <button type="button" class="btn trace-btn-ghost btn-xs" id="clearBrowseFiltersBtn">
+                    <i class="bi bi-x-circle me-1" aria-hidden="true"></i>Clear Filters
+                  </button>
+                </div>
+              </div>
+
+              <div class="row g-4" id="browseGrid">
+                <!-- Item cards populated dynamically by script.js -->
+              </div>
+
+              <!-- Animated Empty State -->
+              <div class="empty-state-box" id="browseEmptyState" hidden>
+                <div class="empty-state-orbit" aria-hidden="true">
+                  <i class="bi bi-radar"></i>
+                </div>
+                <h3 class="h5 fw-bold mt-3">No matching campus reports</h3>
+                <p class="text-muted-navy mb-3">Try broadening your category, location, or search terms.</p>
+                <button type="button" class="btn trace-btn-secondary btn-sm" id="resetBrowseFilters">Reset All Filters</button>
+              </div>
+            </section>
+
+            <!-- ===================================================
+                 5. RECOVERY ACTIVITY TIMELINE
+                 =================================================== -->
+            <section class="workspace-section" id="activity" aria-labelledby="activityTitle">
+              <div class="section-header-row reveal-item">
+                <div>
+                  <span class="section-kicker">Audit &amp; Recovery Feed</span>
+                  <h2 class="section-title" id="activityTitle">Campus Recovery Activity</h2>
+                  <p class="section-subtitle">Verified handoffs, automatic match triggers, and live campus desk updates.</p>
+                </div>
+              </div>
+
+              <div class="row g-4">
+                <div class="col-lg-8">
+                  <div class="glass-panel reveal-item">
+                    <ul class="activity-timeline" id="activityFeed">
+                      <!-- Timeline items populated by script.js -->
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="glass-panel zone-breakdown-panel reveal-item">
+                    <h3 class="panel-title mb-1">Zone Breakdown</h3>
+                    <p class="panel-subtitle mb-3">Reports &amp; recoveries by campus building</p>
+                    <div class="zone-stats-list" id="zoneStatsList">
+                      <!-- Dynamically rendered by script.js -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div><!-- /.workspace-main -->
+        </div><!-- /.workspace-frame -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Minimal Refined Footer -->
+  <footer class="trace-footer">
+    <div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <img src="assets/trace-logo.svg" alt="" width="24" height="24" />
+        <span class="fw-bold text-navy">TRACE</span>
+        <span class="text-muted-navy small">&mdash; Intelligent Campus Recovery System</span>
+      </div>
+      <div class="small text-muted-navy">
+        Student Union Desk 104B &middot; Daily 08:00&ndash;21:00 &middot; Built for fast, dignified campus returns
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       ITEM DETAIL MODAL
+       ========================================================= -->
+  <div class="modal fade trace-modal" id="itemDetailModal" tabindex="-1" aria-labelledby="itemDetailModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge-type" id="detailTypeBadge">LOST</span>
+            <span class="status-pill" id="detailStatusBadge">Active</span>
+            <span class="mono-id" id="detailIdBadge">#TRC-104</span>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close item details"></button>
+        </div>
+        <div class="modal-body pt-3">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-5">
+              <div class="modal-visual-box" id="detailVisualBox"></div>
+            </div>
+            <div class="col-md-7">
+              <span class="detail-category-label" id="detailCategory">Electronics</span>
+              <h3 class="modal-title h4 fw-bold mt-1 mb-2" id="itemDetailModalTitle">Item Name</h3>
+              <p class="text-muted-navy mb-3" id="detailDescription"></p>
+
+              <div class="detail-spec-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Primary Colour</span>
+                  <span class="spec-value" id="detailColour"></span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Campus Location</span>
+                  <span class="spec-value" id="detailLocation"></span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Date Reported</span>
+                  <span class="spec-value" id="detailDate"></span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Custody / Contact</span>
+                  <span class="spec-value" id="detailCustody"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-2">
+          <button type="button" class="btn trace-btn-ghost" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn trace-btn-secondary" id="detailJumpMatchesBtn">
+            <i class="bi bi-cpu me-1" aria-hidden="true"></i>View Smart Matches
+          </button>
+          <button type="button" class="btn trace-btn-primary" id="detailMarkRecoveredBtn">
+            <i class="bi bi-check2-circle me-1" aria-hidden="true"></i>Mark Recovered
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SMART MATCH REVIEW MODAL
+       ========================================================= -->
+  <div class="modal fade trace-modal" id="matchReviewModal" tabindex="-1" aria-labelledby="matchReviewModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <div>
+            <span class="section-kicker mb-1">Match Verification</span>
+            <h3 class="modal-title h4 fw-bold" id="matchReviewModalTitle">Review Suggested Match</h3>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close match review"></button>
+        </div>
+        <div class="modal-body" id="matchReviewBody">
+          <!-- Populated dynamically by script.js -->
+        </div>
+        <div class="modal-footer border-0 flex-wrap justify-content-between gap-2">
+          <button type="button" class="btn trace-btn-ghost text-danger" id="dismissMatchBtn">
+            <i class="bi bi-x-circle me-1" aria-hidden="true"></i>Reject Match
+          </button>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn trace-btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn trace-btn-secondary ripple-btn" id="confirmMatchBtn">
+              <i class="bi bi-patch-check me-1" aria-hidden="true"></i>Confirm Match
+            </button>
+            <button type="button" class="btn trace-btn-primary ripple-btn" id="markMatchRecoveredBtn">
+              <i class="bi bi-shield-check me-1" aria-hidden="true"></i>Mark Recovered / Resolved
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CONFIRMATION DIALOG MODAL (Replaces native confirm)
+       ========================================================= -->
+  <div class="modal fade trace-modal" id="confirmActionModal" tabindex="-1" aria-labelledby="confirmActionTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h3 class="modal-title h5 fw-bold" id="confirmActionTitle">Confirm Action</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close confirmation"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <p class="small text-muted-navy mb-0" id="confirmActionMessage">Are you sure you want to continue?</p>
+        </div>
+        <div class="modal-footer border-0 pt-2">
+          <button type="button" class="btn trace-btn-ghost btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn trace-btn-primary btn-sm ripple-btn" id="confirmActionProceedBtn">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Region -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
